@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    primary:
+      jdbc-url: jdbc:mysql://81.68.74.244:3306/free_school?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+      username: school
+      password: School@2018
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP-primary
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+    quartz-data:
+      jdbc-url: jdbc:mysql://81.68.74.244:3306/free_school_quartz?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+      username: school
+      password: School@2018
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP-quartz
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false

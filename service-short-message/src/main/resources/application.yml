@@ -1,0 +1,48 @@
+custom:
+  short-message:
+    product: Dysmsapi
+    domain: dysmsapi.aliyuncs.com
+    access-key-id: LTAI4oETwsETtPLz
+    access-key-secret: mSKw9kfkvfnoWPrV3VOSaadioEtcir
+    default-connect-timeout: 10000
+    default-read-timeout: 10000
+    sign-name: 大学时光
+    login-template-code: SMS_167964255
+    register-template-code: SMS_167964266
+    forget-template-code: SMS_167964266
+    out-id:
+
+---
+server:
+  port: 9881
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka-server1:8761/eureka,http://admin:admin@eureka-server2:8762/eureka
+    register-with-eureka: true
+  instance:
+    instance-id: service-short-message1
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 2
+spring:
+  profiles: service-short-message1
+  application:
+    name: service-short-message
+---
+server:
+  port: 9882
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka-server1:8761/eureka,http://admin:admin@eureka-server2:8762/eureka
+    register-with-eureka: true
+  instance:
+    instance-id: service-short-message2
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 2
+spring:
+  profiles: service-short-message2
+  application:
+    name: service-short-message

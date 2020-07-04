@@ -1,0 +1,12 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: zkdjredis!
+    timeout: 300s
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: 10s
+        min-idle: 0
