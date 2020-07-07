@@ -2,6 +2,7 @@ package com.example.shiro.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.example.shiro.xss.XssHttpServletRequestWrapper;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.http.MediaType;
@@ -13,7 +14,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,14 +28,14 @@ public class RequestResponseUtil {
     /**
      * 取request中的已经被防止XSS，SQL注入过滤过的key value数据封装到map 返回
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return Map<String, String>
      */
     public static Map<String, String> getRequestParameters(ServletRequest request) {
-        Map<String, String> dataMap = new HashMap<>();
-        Enumeration enums = request.getParameterNames();
+        Map<String, String> dataMap = Maps.newHashMap();
+        Enumeration<String> enums = request.getParameterNames();
         while (enums.hasMoreElements()) {
-            String paraName = (String) enums.nextElement();
+            String paraName = enums.nextElement();
             String paraValue = RequestResponseUtil.getRequest(request).getParameter(paraName);
             if (null != paraValue && !"".equals(paraValue)) {
                 dataMap.put(paraName, paraValue);
@@ -47,21 +47,22 @@ public class RequestResponseUtil {
     /**
      * 获取request中的body json 数据转化为map
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return Map<String, String>
      */
     @SuppressWarnings("unchecked")
     public static Map<String, String> getRequestBodyMap(ServletRequest request) {
-        Map<String, String> dataMap = new HashMap<>();
+        Map<String, String> dataMap = Maps.newHashMap();
+        final String body = "body";
         // 判断是否已经将 inputStream 流中的 body 数据读出放入 attribute
-        if (request.getAttribute("body") != null) {
+        if (request.getAttribute(body) != null) {
             // 已经读出则返回attribute中的body
-            return (Map<String, String>) request.getAttribute("body");
+            return (Map<String, String>) request.getAttribute(body);
         } else {
             try {
                 Map<String, String> maps = JSON.parseObject(request.getInputStream(), Map.class);
                 dataMap.putAll(maps);
-                request.setAttribute("body", dataMap);
+                request.setAttribute(body, dataMap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -72,9 +73,9 @@ public class RequestResponseUtil {
     /**
      * 读取request 已经被防止XSS，SQL注入过滤过的 请求参数key 对应的value
      *
-     * @param request
-     * @param key
-     * @return
+     * @param request request
+     * @param key     key
+     * @return String
      */
     public static String getParameter(ServletRequest request, String key) {
         return RequestResponseUtil.getRequest(request).getParameter(key);
@@ -83,9 +84,9 @@ public class RequestResponseUtil {
     /**
      * 读取request 已经被防止XSS，SQL注入过滤过的 请求头key 对应的value
      *
-     * @param request
-     * @param key
-     * @return
+     * @param request request
+     * @param key     key
+     * @return String
      */
     public static String getHeader(ServletRequest request, String key) {
         return RequestResponseUtil.getRequest(request).getHeader(key);
@@ -94,14 +95,14 @@ public class RequestResponseUtil {
     /**
      * 取request头中的已经被防止XSS，SQL注入过滤过的 key value数据封装到map 返回
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return Map<String, String>
      */
     public static Map<String, String> getRequestHeaders(ServletRequest request) {
-        Map<String, String> headerMap = new HashMap<>();
-        Enumeration enums = RequestResponseUtil.getRequest(request).getHeaderNames();
+        Enumeration<String> enums = RequestResponseUtil.getRequest(request).getHeaderNames();
+        Map<String, String> headerMap = Maps.newHashMap();
         while (enums.hasMoreElements()) {
-            String name = (String) enums.nextElement();
+            String name = enums.nextElement();
             String value = RequestResponseUtil.getRequest(request).getHeader(name);
             if (null != value && !"".equals(value)) {
                 headerMap.put(name, value);
@@ -117,7 +118,7 @@ public class RequestResponseUtil {
     public static void responseWrite(String outStr, ServletResponse response) {
 
         response.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         try (PrintWriter printWriter = WebUtils.toHttp(response).getWriter()) {
             printWriter.write(outStr);
         } catch (Exception e) {

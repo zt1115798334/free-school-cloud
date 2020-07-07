@@ -4,7 +4,6 @@ package com.example.datasource.config;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
-import org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -36,16 +35,20 @@ import java.util.Objects;
         entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
         basePackages = {"com.example.datasource.repo"})
+
 public class PrimaryConfig {
 
     @Resource
     @Qualifier("primaryDataSource")
     private DataSource primaryDataSource;
 
+    @Resource
+    private EntityManagerFactoryBuilder builder;
+
     @Primary
     @Bean(name = "entityManagerPrimary")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-        return Objects.requireNonNull(entityManagerFactoryPrimary(builder).getObject()).createEntityManager();
+    public EntityManager entityManager() {
+        return Objects.requireNonNull(entityManagerFactoryPrimary().getObject()).createEntityManager();
     }
 
     @Resource
@@ -63,7 +66,7 @@ public class PrimaryConfig {
      */
     @Primary
     @Bean(name = "entityManagerFactoryPrimary")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary() {
         return builder
                 .dataSource(primaryDataSource)
                 .packages("com.example.datasource.entity")
@@ -74,8 +77,8 @@ public class PrimaryConfig {
 
     @Primary
     @Bean(name = "transactionManagerPrimary")
-    public PlatformTransactionManager transactionManagerPrimary(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactoryPrimary(builder).getObject()));
+    public PlatformTransactionManager transactionManagerPrimary() {
+        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactoryPrimary().getObject()));
     }
 
 
