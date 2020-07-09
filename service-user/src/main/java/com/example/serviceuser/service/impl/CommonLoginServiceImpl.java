@@ -5,7 +5,7 @@ import com.example.common.exception.custom.OperationException;
 import com.example.common.utils.SysConst;
 import com.example.datasource.entity.User;
 import com.example.datasource.entity.UserRegistration;
-import com.example.datasource.service.UserRegistrationService;
+import com.example.shiro.service.UserRegistrationService;
 import com.example.serviceuser.service.CommonLoginService;
 import com.example.shiro.redis.SecurityRedisService;
 import com.example.shiro.token.JwtComponent;

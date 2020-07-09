@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.common.exception.custom.OperationException;
 import com.example.common.utils.SysConst;
 import com.example.datasource.entity.User;
-import com.example.datasource.service.UserService;
+import com.example.shiro.service.UserService;
 import com.example.serviceuser.service.CommonLoginService;
 import com.example.serviceuser.validation.NoticeType;
 import com.example.shiro.aop.DistributedLock;
@@ -20,19 +20,13 @@ import com.google.common.base.Objects;
 import lombok.AllArgsConstructor;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.http.MediaType;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.AbstractController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 /**

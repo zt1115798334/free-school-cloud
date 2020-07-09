@@ -1,3 +1,6 @@
+spring:
+  profiles:
+    include: shiro
 ---
 server:
   port: 8771

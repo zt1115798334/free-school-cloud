@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.common.base.custom.SystemStatusCode;
 import com.example.common.utils.SysConst;
 import com.example.datasource.entity.User;
-import com.example.datasource.service.UserService;
+import com.example.shiro.service.UserService;
 import com.example.shiro.base.ResultMessage;
 import com.example.shiro.redis.SecurityRedisService;
 import com.example.shiro.token.JwtComponent;

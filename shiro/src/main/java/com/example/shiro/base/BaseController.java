@@ -1,5 +1,7 @@
 package com.example.shiro.base;
 
+import com.example.common.base.custom.SystemStatusCode;
+
 /**
  * Created with IntelliJ IDEA.
  *

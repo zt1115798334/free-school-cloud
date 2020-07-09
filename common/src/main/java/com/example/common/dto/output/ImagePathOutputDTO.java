@@ -4,6 +4,7 @@ import com.example.common.utils.SysConst;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class ImagePathOutputDTO {
 
     private String originalImageFileUrl;

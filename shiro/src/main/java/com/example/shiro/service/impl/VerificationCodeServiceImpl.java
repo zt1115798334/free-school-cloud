@@ -1,8 +1,7 @@
 package com.example.shiro.service.impl;
 
 
-import com.example.common.exception.custom.OperationException;
-import com.example.datasource.service.VerificationCodeLogService;
+import com.example.shiro.service.VerificationCodeLogService;
 import com.example.shiro.properties.VerificationCodeProperties;
 import com.example.shiro.service.ShortMessageService;
 import com.example.shiro.service.VerificationCodeService;
@@ -10,10 +9,6 @@ import com.example.shiro.utils.NetworkUtil;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Component;
-
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created with IntelliJ IDEA.

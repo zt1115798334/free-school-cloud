@@ -40,4 +40,5 @@ public class ParamsInputDTO extends PageInputDTO {
      */
 //    @SearchArea
     private String searchArea;
+
 }

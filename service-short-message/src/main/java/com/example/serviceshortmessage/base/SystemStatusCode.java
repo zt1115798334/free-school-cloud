@@ -35,10 +35,16 @@ public enum SystemStatusCode {
      */
     SC_UNSUPPORTED_MEDIA_TYPE(415, "unsupportedMediaType", "不支持当前媒体类型"),
     /**
+     * 参数异常
+     */
+    PARAMS_VALIDATION_FAILED(4000, "paramsValidationFailed", "参数异常"),
+    /**
      * 系统错误
      */
     SC_INTERNAL_SERVER_ERROR(500, "internalServerError", "系统错误");
+
+
     private final Integer code;
     private final String name;
     private final String msg;
-    }
+}

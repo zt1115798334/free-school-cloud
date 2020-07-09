@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    include: shiro
+---
+server:
+  port: 8791
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka-server1:8761/eureka,http://admin:admin@eureka-server2:8762/eureka
+    register-with-eureka: true
+  instance:
+    instance-id: service-information1
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 2
+spring:
+  profiles: service-information1
+  application:
+    name: service-information
+---
+server:
+  port: 8792
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@eureka-server1:8761/eureka,http://admin:admin@eureka-server2:8762/eureka
+    register-with-eureka: true
+  instance:
+    instance-id: service-information2
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 2
+spring:
+  profiles: service-information2
+  application:
+    name: service-information

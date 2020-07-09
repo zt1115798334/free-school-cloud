@@ -2,10 +2,18 @@ package com.example.datasource.base.service;
 
 
 import com.example.common.base.service.BaseConstant;
+import com.example.common.utils.SysConst;
+import com.example.datasource.jpa.SearchFilter;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import static com.example.datasource.jpa.SearchFilter.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -63,5 +71,33 @@ public interface BaseService<T, ID> extends BaseConstant {
 
     default Page<T> findPageByEntity(T t) {
         return null;
+    }
+
+    default List<SearchFilter> getEffectiveState() {
+        List<SearchFilter> filters = Lists.newArrayList();
+        filters.add(new SearchFilter("state", SysConst.State.IN_RELEASE.getType(), Operator.NEQ));
+        filters.add(new SearchFilter("state", SysConst.State.LOWER_SHELF.getType(), Operator.NEQ));
+        filters.add(new SearchFilter("deleteState", UN_DELETED, Operator.EQ));
+        return filters;
+    }
+
+    default List<SearchFilter> getTopicFilter(List<SearchFilter> filters, String searchArea, String searchValue, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        if (StringUtils.isNotEmpty(searchValue)) {
+            if (Objects.equal(SysConst.SearchArea.ALL.getType(), searchArea)) {
+                filters.add(new SearchFilter("title", searchValue, Operator.LIKE, Logic.OR));
+                filters.add(new SearchFilter("describeContent", searchValue, Operator.LIKE, Logic.OR));
+            }
+            if (Objects.equal(SysConst.SearchArea.TITLE.getType(), searchArea)) {
+                filters.add(new SearchFilter("title", searchValue, Operator.LIKE, Logic.OR));
+            }
+            if (Objects.equal(SysConst.SearchArea.CONTENT.getType(), searchArea)) {
+                filters.add(new SearchFilter("describeContent", searchValue, Operator.LIKE, Logic.OR));
+            }
+        }
+        if (startDateTime != null && endDateTime != null) {
+            filters.add(new SearchFilter("createdTime", startDateTime, Operator.GTE));
+            filters.add(new SearchFilter("createdTime", endDateTime, Operator.LTE));
+        }
+        return filters;
     }
 }

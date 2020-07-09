@@ -1,9 +1,7 @@
 package com.example.common.dto.output;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -15,17 +13,19 @@ import java.io.Serializable;
  * date: 2018/12/14 13:16
  * description:
  */
+@Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class UserOutputDTO implements Serializable {
 
 
     /**
      * 用户名Id
      */
-    private Long userId;
+    private Long id;
     /**
      * 用户名
      */
@@ -51,16 +51,7 @@ public class UserOutputDTO implements Serializable {
      */
     private Long integral;
     /**
-     * 学校标识
-     */
-    private Short schoolCode;
-    /**
-     * 学校
-     */
-    private String school;
-    /**
      * 账户类型：{admin :管理员用户,studentPresident:学生会用户,student:学生用户}
-     * {@link SysConst.AccountType}
      */
     private String accountType;
     /**

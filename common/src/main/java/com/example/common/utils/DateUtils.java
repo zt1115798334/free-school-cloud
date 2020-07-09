@@ -619,12 +619,12 @@ public class DateUtils {
             startDateTime = dateTimeToFirstTime(yesterdayDateTime);
             endDateTime = dateTimeToLastTime(yesterdayDateTime);
         }
-        if (Objects.equal(timeType, TimeType.WEEK.getType())) {
+        if (Objects.equal(timeType, TimeType.NEARLY_SEVEN_DAYS.getType())) {
             LocalDateTime beforeWeekDateTime = currentDateTimeAddDay(-6);
             startDateTime = dateTimeToFirstTime(beforeWeekDateTime);
             endDateTime = dateTimeToLastTime(currentDateTime);
         }
-        if (Objects.equal(timeType, TimeType.MONTH.getType())) {
+        if (Objects.equal(timeType, TimeType.NEARLY_THIRTY_DAYS.getType())) {
             LocalDateTime beforeMonthDateTime = currentDateTimeAddMonth(-1);
             startDateTime = dateTimeToFirstTime(beforeMonthDateTime);
             endDateTime = dateTimeToLastTime(currentDateTime);

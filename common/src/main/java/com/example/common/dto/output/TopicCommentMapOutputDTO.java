@@ -10,11 +10,10 @@ import java.util.Map;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class TopicCommentMapOutputDTO {
 
-    private Map<Long, UserOutputDTO> userMap;
-    private Map<Long, Long> zanNumMap;
-    private Map<Long, Long> zanStateMap;
+    private final Map<Long, UserOutputDTO> userMap;
+    private final Map<Long, Long> zanNumMap;
+    private final Map<Long, Long> zanStateMap;
 
 }

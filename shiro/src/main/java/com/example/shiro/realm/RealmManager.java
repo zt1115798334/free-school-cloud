@@ -1,7 +1,7 @@
 package com.example.shiro.realm;
 
-import com.example.datasource.service.PermissionService;
-import com.example.datasource.service.UserService;
+import com.example.shiro.service.PermissionService;
+import com.example.shiro.service.UserService;
 import com.example.shiro.properties.AccountProperties;
 import com.example.shiro.redis.SecurityRedisService;
 import com.example.shiro.token.JwtComponent;

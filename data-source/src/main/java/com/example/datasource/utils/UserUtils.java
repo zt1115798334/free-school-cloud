@@ -1,5 +1,7 @@
 package com.example.datasource.utils;
 
+import com.example.common.dto.output.ImagePathOutputDTO;
+import com.example.common.dto.output.UserOutputDTO;
 import com.example.common.utils.Digests;
 import com.example.common.utils.Encodes;
 import com.example.common.utils.MStringUtils;
@@ -78,6 +80,10 @@ public class UserUtils {
         return Encodes.encodeHex(hashPassword);
     }
 
+    public static UserOutputDTO getDefaultUserDto() {
+        return new UserOutputDTO(0L, "时光", "", "未知", "未知", SysConst.Sex.UNKNOWN.getCode(),
+                SysConst.DEFAULT_INTEGRAL, SysConst.AccountType.STUDENT.getType(), new ImagePathOutputDTO(1L));
+    }
 
 
     public static User getDefaultUser() {

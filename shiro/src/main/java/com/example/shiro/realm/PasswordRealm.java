@@ -3,7 +3,7 @@ package com.example.shiro.realm;
 import com.example.common.utils.MD5Utils;
 import com.example.common.utils.SysConst;
 import com.example.datasource.entity.User;
-import com.example.datasource.service.UserService;
+import com.example.shiro.service.UserService;
 import com.example.datasource.utils.UserUtils;
 import com.example.shiro.properties.AccountProperties;
 import com.example.shiro.redis.SecurityRedisService;

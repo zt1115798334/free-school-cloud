@@ -26,6 +26,8 @@
         <module>data-source</module>
         <module>redis-source</module>
         <module>shiro</module>
+        <module>service-additional</module>
+        <module>service-information</module>
         <module>service-user</module>
     </modules>
     <dependencyManagement>
@@ -126,10 +128,19 @@
             </dependency>
             <dependency>
                 <groupId>com.example</groupId>
+                <artifactId>service-additional</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>service-information</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
                 <artifactId>service-user</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
-
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>service-short-message</artifactId>

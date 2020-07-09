@@ -66,28 +66,12 @@ public class User extends BaseIdPageEntity {
     private Long integral;
 
     /**
-     * 学校标识
-     */
-    private Short schoolCode;
-
-    /**
-     * 学校
-     */
-    private String school;
-    /**
-     * 学校地址
-     */
-    private String schoolAddress;
-
-    /**
      * 账户状态：{0：冻结,1:正常}
-     * {@link SysConst.AccountState}
      */
     private Short accountState;
 
     /**
      * 账户类型：{admin :管理员用户,studentPresident:学生会用户,student:学生用户}
-     * {@link SysConst.AccountType}
      */
     private String accountType;
 
@@ -120,12 +104,11 @@ public class User extends BaseIdPageEntity {
         this.accountType = accountType;
     }
 
-    public User(String userName, String personalSignature, String phone, String email, Short sex, Short schoolCode) {
+    public User(String userName, String personalSignature, String phone, String email, Short sex) {
         this.userName = userName;
         this.personalSignature = personalSignature;
         this.phone = phone;
         this.email = email;
         this.sex = sex;
-        this.schoolCode = schoolCode;
     }
 }

@@ -2,8 +2,8 @@ package com.example.shiro.filter;
 
 import com.example.common.base.custom.SystemStatusCode;
 import com.example.datasource.entity.Permission;
-import com.example.datasource.service.PermissionService;
-import com.example.datasource.service.UserService;
+import com.example.shiro.service.PermissionService;
+import com.example.shiro.service.UserService;
 import com.example.shiro.redis.SecurityRedisService;
 import com.example.shiro.token.JwtComponent;
 import com.google.common.collect.Maps;

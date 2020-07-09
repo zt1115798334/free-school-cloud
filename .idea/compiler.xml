@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <file url="file://$PROJECT_DIR$/common/src/main/java/com/example/common/dto/output/UserOutputDTO.java" />
+      <file url="file://$PROJECT_DIR$/common/src/main/java/com/example/common/dto/output/ImagePathOutputDTO.java" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="service-user" />
+        <module name="eureka-server" />
+        <module name="shiro" />
+        <module name="common" />
+        <module name="service-short-message" />
+        <module name="data-source" />
+        <module name="service-additional" />
+        <module name="service-information" />
+        <module name="redis-source" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
+      <module name="data-source" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="redis-source" options="-parameters" />
+      <module name="service-additional" options="-parameters" />
+      <module name="service-information" options="-parameters" />
+      <module name="service-short-message" options="-parameters" />
+      <module name="service-user" options="-parameters" />
+      <module name="shiro" options="-parameters" />
+    </option>
+  </component>
+</project>

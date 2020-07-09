@@ -1,3 +1,4 @@
+
 custom:
   account:
     first-error-account-lock-time: 3
@@ -19,3 +20,6 @@ custom:
     remember-me-refresh-expiration: 40
     token-head: Bearer
     secret: 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+spring:
+  profiles:
+    include: redis,datasource

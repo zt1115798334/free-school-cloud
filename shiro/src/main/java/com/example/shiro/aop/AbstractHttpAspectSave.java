@@ -6,7 +6,7 @@ import com.example.common.utils.DateUtils;
 import com.example.common.utils.MStringUtils;
 import com.example.datasource.entity.User;
 import com.example.datasource.entity.UserLog;
-import com.example.datasource.service.UserLogService;
+import com.example.shiro.service.UserLogService;
 import com.example.shiro.base.CurrentUser;
 import com.example.shiro.utils.NetworkUtil;
 import lombok.AllArgsConstructor;
